@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Agenda</title>
+    <meta charset="utf-8">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 5em;
+            background: linear-gradient(145deg, rgb(195, 240, 200), rgb(80, 155, 245));
+            background-repeat: no-repeat;
+            padding: 5 em;
+        }
+
+        main {
+            margin: 3em 5em 1em 5em;
+        }
+
+            h1 {
+                text-align: center;
+            }
+
+            h2 {
+                color: DarkRed;
+            }
+
+            #task_list {
+                margin-top: 2em;
+                margin-bottom: 2em;
+                margin-left: 3em;
+                margin-right: 3em;
+            }
+
+                .inline {
+                    display: inline;
+                }
+
+                li {
+                    margin: .5em;
+                    font-size: 1.4em;
+                }
+
+            #add_tasks {
+                margin: 2em auto 2em auto;
+                width: 50%;
+            }
+
+    </style>
+</head>
+
+<body>
+    <main>
+
+        <h1>Tasks Agenda:</h1>
+
+        <div id="task_list">
+            <h2>Current tasks:</h2>
+            {% if all_tasks %}
+                <ul>
+                    {% for t in all_tasks %}
+                    <li>{{ t.task_text }}
+                        <form class="inline" action="deleteTask/{{ t.id }}/" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete">
+                        </form>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>There's no tasks in agenda!</p>
+            {% endif %}
+        </div>
+
+        <hr>
+
+        <div id="add_tasks">
+            <h2>Add task:</h2>
+            <form action="addTask/" method="post">
+                {% csrf_token %}
+                <label for="new_task">
+                    <input type="text" id="new_task" name="new_task_from_form" size="30">
+                </label>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
