@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Joke Exchange</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        main {
+            width: 60%;
+            margin: auto;
+            margin-top: 5em;
+            background-image: linear-gradient(red, yellow);
+            border-radius: 2em;
+            padding: 2em;
+        }
+        header {
+            color: yellow;
+            text-align: center;
+        }
+            header p {
+                font-size: 1.5em;
+            }
+        #send_joke {
+            text-shadow: #474747 2px 1px 1px;
+        }
+        #send_joke h2 {
+            color: brown;
+        }
+        #send_joke p {
+            color: red;
+            font-size: 1.8em;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- WELCOME MESSAGE -->
+        <header>
+            <h1>JOKEBOX</h1>
+            <p>You can tell me joke, and get random one instead.</p>
+        </header>
+
+        <!-- GET JOKE -->
+        <form action="index.html" method="post">
+            {% csrf_token %}
+            <label for="new_joke">Input Joke*:
+            <textarea id="new_joke" name="new_joke_f" cols="30" rows="4"></textarea>
+            </label>
+            <br>
+            <br>
+            <label for="joke_author">Name yourself:
+            <input type="text" id="joke_author" name="joke_author_f">
+            </label>
+            <br>
+            <br>
+            <button type="submit">Send :)</button>
+        </form> 
+
+        <!-- SEND JOKE IN RESPONSE OF GET JOKE -->
+        {% if send_back %}
+        <div id="send_joke">
+            <h2>Thank you. Joke for you:</h2>
+            <p>{{ random_joke }}</p>
+            <p>{{ random_joke_author }}</p>
+        </div>
+        {% endif %}
+
+    </main>
+    
+
+</body>
+
+
+</html>
