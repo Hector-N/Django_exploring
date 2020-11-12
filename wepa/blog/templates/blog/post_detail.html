@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{ post.headline }}</title>
+	<meta charset="utf-8">
+	<style>
+	    .right-align {
+	        text-align: right;
+	    }
+        header {
+            text-align: center;
+        }
+        .post {
+            background-color: silver;
+            width: 80%;
+            margin: 2em auto 2em auto;
+            padding: 1em 2em 2em 2em;
+
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+            .post-content {
+
+            }
+            .post-comments {
+                width: 80%;
+                margin: 2em auto 2em auto;
+                border: 1px solid brown;
+            }
+	</style>
+</head>
+
+<body>
+
+<header>
+
+
+    <h1><a href="{% url 'homepage' %}">My Awsome Blog</a></h1>
+    {% if say_hi_to %}
+    <p>Hi to {{ say_hi_to }}!</p>
+    <p>Saludos para los bachateros!</p>
+    <p>Hi to everyone!</p>
+    {% endif %}
+
+</header>
+
+<main>
+
+    <div class="post">
+        <div class="post-header">
+            <h2><a href="/feed/post_{{ post.id }}/">{{ post.headline }}</a></h2>
+            <p class="right-align">Tags: {{ post.tags.all }}</p>
+            <p class="right-align">Date: {{ post.date }}</p>
+        </div>
+        <div class="post-content">
+            <p>{{ post.text }}</p>
+
+        </div>
+        <div class="post-comments">
+            <h3>Comments</h3>
+            {% if post.comments.count %}
+                {% for comment in post.comments.all %}
+                <p>{{ comment.text }} ({{ comment.author }})</p>
+                {% endfor %}
+            {% else %}
+                <p>No comments here...</p>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<footer>
+	<p style="text-align: center;">this is footer</p>
+</footer>
+
+</body>
+
+</html>
