@@ -1,36 +1,74 @@
-.right-align {
-    text-align: right;
+html {
+
+}
+body {
+    background-image: url("../images/apple.jpg");
 }
 header {
+    border: 2px solid;
+    border-radius: 2em;
     text-align: center;
+    background-color: rgba(174, 116, 53, .8);
+    color: rgba(231, 233, 236, 1);
+
 }
-h1, h2, h3 {
+
+.link:link {
+    color: rgba(209, 188, 157, 1);
+}
+.link:visited {
+    color: rgba(209, 188, 157, 1);
+}
+.link:hover {
+    color: rgba(209, 255, 157, 1);
+}
+.link:active {
+    color: rgba(209, 188, 157, 1);
+}
+
+
+header a:link {
+    text-decoration: none;
+    color: rgba(231, 233, 236, 1);
+}
+header a:visited {
+    color: rgba(231, 233, 236, 1);
+    text-decoration: none;
+}
+header a:hover {
+    color: rgba(231, 233, 236, 1);
+    text-decoration: none;
+}
+header a:active {
+    color: rgba(231, 233, 236, 1);
+    text-decoration: none;
+}
+
+
+
+div#nav_main {
+    display: flex;
+    align-items: center;
+
+}
+    nav {
+        flex-basis: 20%;
+        align-self: flex-start;
+        margin-top: 3em;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid red;
+        /*background-color: rgba(108, 92, 90, .8);*/
+        background-color: rgba(123, 59, 91, .4); 
+    }
+    main {
+        flex-basis: 80%;
+        
+        border: 2px dotted green;
+
+    }
+footer {
     text-align: center;
+    margin: 3em auto 3em auto;
+    border: 1px solid black;
 }
-.post {
-    background-color: silver;
-    border-radius: 1em;
-    width: 80%;
-    margin: 2em auto 2em auto;
-    padding: 1em 2em 2em 2em;
-
-}
-    .post-header {
-
-    }
-    .post-meta-info {
-        border: 1px solid pink;
-        padding-left: 70%;
-        color: white;
-
-    }
-    .post-content {
-
-    }
-    .post-comments {
-        width: 80%;
-        margin: 2em auto 2em auto;
-        border: 1px solid brown;
-    }
-
-

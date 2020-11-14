@@ -7,6 +7,7 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/paginator.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/feed.css' %}">
 </head>
 
 <body>
@@ -14,23 +15,33 @@
 <header>
 
     <h1><a href="{% url 'homepage' %}">My Awsome Blog</a></h1>
-    <p>Hi to everyone!</p>
+    <p>A little bit of cooking, jokes, bachatas and so on...</p> 
 
 </header>
 
-<main id="blog_feed">
-    
-    
-    {% if search_tag %}
-        <h2>Search result: tag <strong>"{{ search_tag.name }}"</strong></h2>
-        {% include 'blog/_blog-feed.html' %}
-    {% else %}
-        {% include 'blog/_blog-feed.html' %}
-    {% endif %}
-</main>
+<div id="nav_main">
+    <nav>
+        <p>navigation:</p>
+        <a class="link" href="#">nav link 1</a>
+        <a class="link" href="#">nav link 2</a>
+        <a class="link" href="#">nav link 3</a>
+    </nav>
+
+    <main>
+        
+        
+        {% if search_tag %}
+            <h2>Search result: tag <strong>"{{ search_tag.name }}"</strong></h2>
+            {% include 'blog/_blog-feed.html' %}
+        {% else %}
+            {% include 'blog/_blog-feed.html' %}
+        {% endif %}
+    </main>
+
+</div> <!-- nav_main -->
 
 <footer>
-	<p style="text-align: center;">this is footer</p>
+	<p>this is footer</p>
 </footer>
 
 </body>
