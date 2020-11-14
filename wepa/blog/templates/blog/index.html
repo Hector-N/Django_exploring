@@ -3,42 +3,11 @@
 
 <head>
 	<title>My Blog</title>
-	<meta charset="utf-8">
-	<style>
-	    .right-align {
-	        text-align: right;
-	    }
-        header {
-            text-align: center;
-        }
-        h1, h2, h3 {
-            text-align: center;
-        }
-        .post {
-            background-color: silver;
-            width: 80%;
-            margin: 2em auto 2em auto;
-            padding: 1em 2em 2em 2em;
-
-        }
-            .post-header {
-
-            }
-            .post-meta-info {
-                border: 1px solid pink;
-                padding-left: 70%;
-                color: white;
-
-            }
-            .post-content {
-
-            }
-            .post-comments {
-                width: 80%;
-                margin: 2em auto 2em auto;
-                border: 1px solid brown;
-            }
-	</style>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/paginator.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/feed.css' %}">
 </head>
 
 <body>
@@ -46,55 +15,33 @@
 <header>
 
     <h1><a href="{% url 'homepage' %}">My Awsome Blog</a></h1>
-    {% if say_hi_to %}
-    <p>Hi to {{ say_hi_to }}!</p>
-    <p>Saludos para los bachateros!</p>
-    <p>Hi to everyone!</p>
-    {% endif %}
+    <p>A little bit of cooking, jokes, bachatas and so on...</p> 
 
 </header>
 
-<main>
-    {% if tag %}
-        <h2>Search result: tag <strong>"{{ tag.name }}"</strong></h2>
-        {% for post in posts %}
-            <p>INCLUDE THIS!</p>
+<div id="nav_main">
+    <nav>
+        <p>navigation:</p>
+        <a class="link" href="#">nav link 1</a>
+        <a class="link" href="#">nav link 2</a>
+        <a class="link" href="#">nav link 3</a>
+    </nav>
 
-        {% endfor %}
-    {% else %}
-        {% for post in posts %}
-        <div class="post">
-            <div class="post-header">
-                <h2><a href="{% url 'post_details' post.id %}">{{ post.headline }}</a></h2>
-                <div class="post-meta-info">
-                    <p>Tags: {{ post.tags.all|join:', ' }}</p>
-                    <p>Date: {{ post.date }}</p>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>{{ post.text }}</p>
-                <p><a href="{% url 'post_details' post.id %}">read more...</a></p>
-            </div>
+    <main>
+        
+        
+        {% if search_tag %}
+            <h2>Search result: tag <strong>"{{ search_tag.name }}"</strong></h2>
+            {% include 'blog/_blog-feed.html' %}
+        {% else %}
+            {% include 'blog/_blog-feed.html' %}
+        {% endif %}
+    </main>
 
-            <div class="post-comments">
-                <h3>Comments</h3>
-                {% if post.comments.count %}
-                    {% for comment in post.comments.all %}
-                    <p>{{ comment.text }} ({{ comment.author }})</p>
-                    {% endfor %}
-                {% else %}
-                    <p>No comments here...</p>
-                {% endif %}
-            </div>
-        </div>
-        {% empty %}
-        <p>Sorry, not posts found</p>
-        {% endfor %}
-    {% endif %}
-</main>
+</div> <!-- nav_main -->
 
 <footer>
-	<p style="text-align: center;">this is footer</p>
+	<p>this is footer</p>
 </footer>
 
 </body>

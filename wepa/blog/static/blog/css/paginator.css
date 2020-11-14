@@ -1,0 +1,48 @@
+
+.paginator {
+	font-size: 1.6em;
+	border: 1px solid white;
+	margin: auto;
+	text-align: center;
+	padding: .4em;
+}
+
+/*https://css-tricks.com/when-do-you-use-inline-block/*/
+.paginator a {
+	display: inline-flex;
+	align-items: center;
+	border: 1px solid white;
+	border-radius: 3px;
+	padding: .2em .5em .2em .5em;
+	background-color: rgba(174, 116, 53, .3);
+	
+
+
+}
+
+a#current-page {
+	background-color: rgba(174, 116, 53, .7);
+	color: white;
+}
+
+/*order is important*/
+.paginator a:link {
+	color: rgba(50, 41, 34, 1);
+	text-decoration: none;
+}
+.paginator a:visited {
+	color: rgba(50, 41, 34, 1);
+	color: rgba(50, 41, 34, 1);
+	text-decoration: none;
+}
+.paginator a:hover {
+	background-color: rgba(174, 116, 53, .7);
+	text-decoration: none;
+}
+.paginator a:active {
+	background-color: rgba(174, 116, 53, .9);
+	color: white;
+	text-decoration: none;
+}
+
+

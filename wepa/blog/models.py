@@ -12,7 +12,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
 
-    headline = models.CharField(max_length=30, null=False)
+    headline = models.CharField(max_length=100, null=False)
     text = models.CharField(max_length=1000, null=False)
     date = models.DateTimeField(null=False)
     tags = models.ManyToManyField(Tag)
@@ -26,7 +26,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     text = models.CharField(max_length=500)
-    author = models.CharField(max_length=40)
+    author = models.CharField(max_length=40, default='anonymous')
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE,
                              related_name='comments',

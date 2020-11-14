@@ -1,0 +1,21 @@
+
+{% if all_comments %}
+    <h3>Comments</h3>
+    {% if post.comments.count %}
+        {% for comment in post.comments.all %}
+            <p>{{ comment.text }} ({{ comment.author }})</p>
+        {% endfor %}
+    {% else %}
+        <p>No comments here...</p>
+    {% endif %}
+
+{% else %}
+    <h3>Recent comments</h3>
+    {% if post.comments.count %}
+        {% for comment in post.comments.all|slice:':2' %}
+            <p>{{ comment.text }} ({{ comment.author }})</p>
+        {% endfor %}
+    {% else %}
+        <p>No comments here...</p>
+    {% endif %}
+{% endif %}
