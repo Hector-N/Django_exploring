@@ -1,21 +1,21 @@
-<div class="paginator" style="margin: auto; width:60%;border: 1px solid black;">
-
+<div class="paginator">
+    
     {% if posts.has_previous %}
-        <a href="?page=1"> << </a>
-        <a href="?page={{ posts.previous_page_number }}"> < </a>
+        <a id="a1" href="?page=1"><<</a>
+        <a href="?page={{ posts.previous_page_number }}"><</a>
     {% endif %}
 
     {% for num in posts.paginator.page_range %}
         {% if posts.number == num %}
-            <a href="?page={{ num }}"><strong style="font-size: 1.3em;">{{ num }}</strong></a>
+            <a id="current-page" href="?page={{ num }}">{{ num }}</a>
         {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
             <a href="?page={{ num }}">{{ num }}</a>
         {% endif %}
     {% endfor %}
 
     {% if posts.has_next %}
-        <a href="?page={{ posts.next_page_number }}"> > </a>
-        <a href="?page={{ posts.paginator.num_pages }}"> >> </a>
+        <a href="?page={{ posts.next_page_number }}">></a>
+        <a href="?page={{ posts.paginator.num_pages }}">>></a>
     {% endif %}
 
 </div>

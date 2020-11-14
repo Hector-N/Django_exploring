@@ -6,62 +6,14 @@
 <head>
 	<title>{{ post.headline }}</title>
 	<meta charset="utf-8">
-	<style>
-	    .right-align {
-	        text-align: right;
-	    }
-        header {
-            text-align: center;
-        }
-        .post {
-            background-color: silver;
-            width: 80%;
-            margin: 2em auto 2em auto;
-            padding: 1em 2em 2em 2em;
-
-        }
-        h1, h2, h3 {
-            text-align: center;
-        }
-        .post {
-            background-color: silver;
-            border-radius: 1em;
-            width: 80%;
-            margin: 2em auto 2em auto;
-            padding: 1em 2em 2em 2em;
-
-        }
-            .post-header {
-
-            }
-            .post-meta-info {
-                border: 1px solid pink;
-                padding-left: 70%;
-                color: white;
-
-            }
-            .post-content {
-
-            }
-            .post-comments {
-                width: 80%;
-                margin: 2em auto 2em auto;
-                border: 1px solid brown;
-            }
-	</style>
+	
 </head>
 
 <body>
 
 <header>
-
-
+    
     <h1><a href="{% url 'homepage' %}">My Awsome Blog</a></h1>
-    {% if say_hi_to %}
-    <p>Hi to {{ say_hi_to }}!</p>
-    <p>Saludos para los bachateros!</p>
-    <p>Hi to everyone!</p>
-    {% endif %}
 
 </header>
 
