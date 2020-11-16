@@ -32,7 +32,9 @@
 
 
             {% if specific %}
-                <p><a class='link' href="{% url 'blog:homepage'%}">...go back to feed</a></p>
+                {# href='../' #}
+                {# <p><a class='link' href="{% url 'blog:homepage'%}">...go back to feed</a></p> #}
+                <p><a class='link' href="{{ request.META.HTTP_REFERER }}">...go back</a></p>
             {% else %}
                 <p><a class='link' href="{% url 'blog:post_details' post.id %}">read more or add comment...</a></p>
             {% endif %}

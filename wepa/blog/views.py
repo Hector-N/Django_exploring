@@ -61,7 +61,7 @@ def add_comment(request, post_id):
 
     comment.save()
 
-    return HttpResponseRedirect(reverse('post_details', args=(post_id,)))
+    return HttpResponseRedirect(reverse('blog:post_details', args=(post_id,)))
 
 
 def tag_filter(request, tag_id):
