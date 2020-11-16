@@ -4,6 +4,7 @@ from django.template import loader
 from django.urls import reverse
 from .models import Post, Tag, Comment
 from django.core.paginator import Paginator
+from django.utils import timezone
 
 
 def feed(request, year=None, month=None):
@@ -53,11 +54,12 @@ def add_comment(request, post_id):
     cont = request.POST
     comment = cont['new_comment']
     author = cont['author']
+    date = timezone.now()
     post_to_comment = Post.objects.get(pk=post_id)
     if author:
-        comment = Comment(text=comment, author=author, post=post_to_comment)
+        comment = Comment(text=comment, author=author, post=post_to_comment, date=date)
     else:
-        comment = Comment(text=comment, post=post_to_comment)
+        comment = Comment(text=comment, post=post_to_comment, date=date)
 
     comment.save()
 
