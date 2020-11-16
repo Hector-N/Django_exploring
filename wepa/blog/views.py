@@ -64,10 +64,10 @@ def add_comment(request, post_id):
     return HttpResponseRedirect(reverse('blog:post_details', args=(post_id,)))
 
 
-def tag_filter(request, tag_id):
+def tag_filter(request, tag_name):
 
-    tag = get_object_or_404(klass=Tag, pk=tag_id)
-    posts = Post.objects.all().filter(tags__id=tag_id)
+    tag = get_object_or_404(klass=Tag, name=tag_name)
+    posts = Post.objects.all().filter(tags__id=tag.id)
     paginator = Paginator(object_list=posts, per_page=3, orphans=1)
     page_num = request.GET.get('page')
     posts_page_obj = paginator.get_page(page_num)

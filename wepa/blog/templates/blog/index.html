@@ -31,7 +31,7 @@
         
         
         {% if search_tag %}
-            <h2>Search result: tag <strong>"{{ search_tag.name }}"</strong></h2>
+            <h2 id="search-result">Search result: tag <strong>"{{ search_tag.name }}"</strong></h2>
             {% include 'blog/_blog-feed.html' %}
         {% else %}
             {% include 'blog/_blog-feed.html' %}

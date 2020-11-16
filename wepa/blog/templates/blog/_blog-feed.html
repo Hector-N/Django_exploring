@@ -18,7 +18,7 @@
                 <div class="post-tags">
                     <p>Tags:</p> <!-- hardcoded in post-details -->
                     {% for tag in post.tags.all %}
-                        <a class="tag link" href="{% url 'blog:tag_filter' tag.id %}">{{ tag.name }}</a>
+                        <a class="tag link" href="{% url 'blog:tag_filter' tag.name %}">{{ tag.name }}</a>
                     {% endfor %}
                 </div>
                 <div class="post-date">
