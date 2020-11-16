@@ -1,0 +1,67 @@
+
+{% if not specific %}
+    {% include 'blog/paginator.html' %}
+{% endif %}
+
+{% for post in posts %}
+    <div class="post">
+
+        <div class="post-header">
+
+            {% if specific %}
+                <h2>{{ post.headline }}</h2>
+            {% else %}
+                <h2><a class="link" href="{% url 'blog:post_details' post.id %}">{{ post.headline }}</a></h2>
+            {% endif %}
+
+            <div class="post-meta-info">
+                <div class="post-tags">
+                    <p>Tags:</p> <!-- hardcoded in post-details -->
+                    {% for tag in post.tags.all %}
+                        <a class="tag link" href="{% url 'blog:tag_filter' tag.name %}">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="post-date">
+                    <p>Date: {{ post.date }}</p>                
+                </div>
+            </div>
+        </div>
+
+        <div class="post-content">
+            <p>{{ post.text }}</p>
+
+
+            {% if specific %}
+                {# href='../' #}
+                {# <p><a class='link' href="{% url 'blog:homepage'%}">...go back to feed</a></p> #}
+                <p><a class='link' href="{{ request.META.HTTP_REFERER }}">...go back</a></p>
+            {% else %}
+                <p><a class='link' href="{% url 'blog:post_details' post.id %}">read more or add comment...</a></p>
+            {% endif %}
+        </div>
+
+        {% if specific %}
+        <form class="comment-form" action="add_comment/" method="post">
+            {% csrf_token %}
+            <label for="new_comment">
+                <textarea id="new_comment" name="new_comment">default comment text</textarea>
+            </label>
+            <label for="comment_submitter">
+                <input type="text" id="comment_submitter" name="author">
+            </label>
+            <input type="submit" value="Post comment">
+        </form>
+        {% endif %}
+
+        <div class="post-comments">
+            {% include 'blog/_post-comments.html' %}
+        </div>
+
+    </div> <!--class post -->
+{% empty %}
+    <p>Sorry, not posts found</p>
+{% endfor %}
+
+{% if not specific %}
+    {% include 'blog/paginator.html' %}
+{% endif %}

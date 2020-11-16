@@ -1,0 +1,49 @@
+#search-result {
+    color: white;
+}
+.post {
+ 	background-color: silver;
+ 	padding: 2em 3em 2em 3em;
+ 	margin: 0 2em 2em 2em;
+ 	background-color: rgba(59, 50, 43, .5);
+}
+	.post-header {
+		
+	}
+		.post-header h2 {
+			text-align: center;
+
+		}
+			.post-header h2 a {
+				color: rgba(231, 233, 236, 1);
+
+			}
+		.post-meta-info {
+			margin-left: 70%;
+			background-color: rgba(123, 59, 91, .2);
+			border: 2px solid rgba(123, 59, 91, 1);
+			
+		}
+			.post-tags {
+				display: inline-flex;
+				align-items: center;
+			}
+				.tag:link {
+					color: rgba(231, 233, 236, 1);					
+				}
+				
+			.post-date {
+
+			}
+	.post-content {
+		color: white;
+	}
+	.comment-form {
+
+	}
+	.post-comments {
+		border: solid;
+		width: 50%;
+		margin: auto;
+		background-color: rgba(255, 255, 255, .3);
+	}

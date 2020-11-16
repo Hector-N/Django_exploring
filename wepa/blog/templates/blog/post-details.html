@@ -1,0 +1,55 @@
+{% comment 'all' %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{ post.headline }}</title>
+	<meta charset="utf-8">
+	
+</head>
+
+<body>
+
+<header>
+    
+    <h1><a href="{% url 'homepage' %}">My Awsome Blog</a></h1>
+
+</header>
+
+<main>
+    <div class="post">
+
+        <div class="post-header">
+            <h2>{{ post.headline }}</h2>
+            <div class="post-meta-info">
+                <p>Tags:</p> <!-- hardcoded in post-details -->
+                {% for tag in post.tags.all %}
+                    <a href="{% url 'tag_filter' tag.id %}">{{ tag.name }}</a>
+                {% endfor %}
+
+                <p>Date: {{ post.date }}</p>
+            </div>
+        </div>
+
+        <div class="post-content">
+            <p>{{ post.text }}</p>
+
+        </div>
+        <div class="post-comments">
+            {% include 'blog/_post-comments.html' %}
+        </div>
+    </div>
+</main>
+
+<footer>
+	<p style="text-align: center;">this is footer</p>
+</footer>
+
+</body>
+
+</html>
+
+
+{% endcomment 'all' %}
+
