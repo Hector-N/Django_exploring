@@ -9,13 +9,32 @@
 </head>
 
 <header>
-    <h1>Details of specific poll</h1>
+
+        <h1><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
+
 </header>
 
 
 <main>
-    <p>POLL PAGE</p>
-    <p>Say {{ context }}</p>
+    <h2>Poll number {{ question.id }}</h2>
+    <p>{{ question.text }}</p>
+
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for option in question.option_set.all %}
+            <label for="poll-{{ question.id }}-{{ option.id }}">
+                {{ option.text }}
+                <input id="poll-{{ question.id }}-{{ option.id }}"
+                       type="radio" name="how_tall"
+                       value="{{ option.text }}">
+            </label>
+            <br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Send">
+    </form>
+
+
 </main>
 
 

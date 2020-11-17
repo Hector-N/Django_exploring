@@ -9,19 +9,31 @@
 
 </head>
 
+
 <header>
-    <h1>Awsome Polls</h1>
+
+        <h1><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
+
 </header>
 
 
 <main>
-    <p>HOMEPAGE</p>
-    <p>Say {{ context }}</p>
+
+<div id="flex">
+    {% for question in questions %}
+        <div class="box">
+            <h2>
+                <a href="{% url 'polls:details' question.id %}">{{ question.text }}</a>
+            </h2>
+        </div>
+    {% endfor %}
+</div>
+
 </main>
 
 
 <footer>
-
 </footer>
+
 
 </html>
