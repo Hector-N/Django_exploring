@@ -1,0 +1,51 @@
+
+
+
+
+
+
+main {
+	width: 50%;
+	background-color: rgba(200, 139, 74, .2);
+	border-radius: 3em;
+	margin: auto;
+	margin-top: 10em;
+	padding: 2em;
+}
+
+#poll-header {
+	color: white;
+}
+	#poll-header p {
+		text-align: left;
+		font-size: 1.6em;
+	}
+	#poll-header h2 {
+		text-align: center;
+	}
+
+
+form {
+	margin-left: 2em;
+}
+	label {
+		
+		color: rgba(200, 139, 74, 1);
+		font-size: 1.4em;
+	}
+	label:hover {
+		
+		color: rgba(200, 255, 74, 1);
+		
+	}
+	input {
+		margin: 1em auto 1em auto;
+	}
+
+	#submit:hover {
+		box-shadow: .3em .3em 1em rgba(200, 139, 74, 1), -.3em -.3em 1em rgba(200, 139, 74, 1);
+	}
+
+
+
+

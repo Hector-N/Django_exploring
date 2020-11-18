@@ -5,23 +5,26 @@
     <meta charset="utf-8">
     {% load static %}
     <link rel="stylesheet" type="text/css"
-          href="{% static 'polls/css/main.css' %}">
+        href="{% static 'polls/css/main.css' %}">
+    
+    </style>
 
 </head>
 
+<body>
 
 <header>
 
-        <h1><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
+        <h1 id="title"><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
 
 </header>
 
 
 <main>
 
-<div id="flex">
+<div id="flex-parent">
     {% for question in questions %}
-        <div class="box">
+        <div class="child">
             <h2>
                 <a href="{% url 'polls:details' question.id %}">{{ question.text }}</a>
             </h2>
@@ -35,5 +38,7 @@
 <footer>
 </footer>
 
+
+</body>
 
 </html>

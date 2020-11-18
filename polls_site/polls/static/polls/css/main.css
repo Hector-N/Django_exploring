@@ -1,33 +1,93 @@
+html {
+    background-image: url('pumpkins.jpg');
+    /*background-color: red;*/
+    /*font-size: 20em;*/
+}
+
 
 header {
+
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 5em;
-    border: 2px solid red;
-    padding: 1em;
-}
-h1 {
-    color: green;
-    margin: auto;
+    height: 8em;
+    /*border: 2px solid red;*/
     text-align: center;
 }
-div#flex {
-    border: 2px solid black;
-    width:80%;
-    margin: auto;
+header h1#title {
+    margin: 1.4em;
+    font-size: 2.2em;
+    
+}
+header h1#title a:link {
+    color: rgba(200, 139, 74, 1);
+    text-decoration: none;
+}
+header h1#title a:hover {
+    color: rgba(200, 139, 74, 1);
+}
+header h1#title a:visited {
+    color: rgba(200, 139, 74, 1);
+}
+header h1#title a:active {
+    color: rgba(50, 255, 50, 1);
+}
+
+main {
+    margin-top: 8em;
+}
+#flex-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    /*gap: 1rem;*/
+    /*border: 2px solid white;*/
+    width:60%;
+    margin-top: 12em;
+    margin-left: 0;
+    
+    
+}
+#flex-parent .child {
+    flex-basis: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: rgba(180, 113, 9, .5);
+    background-color: rgba(255, 255, 255, .3);
+    margin: 1em;
     padding: 1em;
 }
-div#flex a:link {
-    display: flex;
-    flex-direction: column;
+#flex-parent .child {
+    
+}
+
+
+
+#flex-parent a:link {
+    
+    
     width: 80%;
     margin: auto;
     margin-top: 2em;
-    color: green;
+    color: rgba(200, 139, 74, 1);
     text-decoration: none;
 
 }
-div#flex a:hover {
-    color: green;
+#flex-parent a:hover {
+    color: rgba(200, 139, 74, 1);
     text-decoration: none;
-    background-color: bisque;
+    /*background-color: bisque;*/
+}
+#flex-parent a:visited {
+    color: rgba(200, 139, 74, 1);
+    text-decoration: none;
+    /*background-color: bisque;*/
+}
+#flex-parent a:active {
+    color: rgba(50, 255, 50, 1);
+    text-decoration: none;
+    /*background-color: bisque;*/
 }

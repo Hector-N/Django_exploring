@@ -6,32 +6,39 @@
     {% load static %}
     <link rel="stylesheet" type="text/css"
           href="{% static 'polls/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" 
+        href="{% static 'polls/css/details.css' %}">
 </head>
 
 <header>
 
-        <h1><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
+        <h1 id="title"><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
 
 </header>
 
+<body>
 
 <main>
-    <h2>Poll number {{ question.id }}</h2>
-    <p>{{ question.text }}</p>
+    <div id="poll-header">
+        <p>Poll number {{ question.id }}</p>
+        <h2>{{ question.text }}</h2>    
+    </div>
+    
 
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
         {% for option in question.option_set.all %}
-            <label for="poll-{{ question.id }}-{{ option.id }}">
-                {{ option.text }}
-                <input id="poll-{{ question.id }}-{{ option.id }}"
+            <input id="poll-{{ question.id }}-{{ option.id }}"
                        type="radio" name="how_tall"
                        value="{{ option.text }}">
+            <label for="poll-{{ question.id }}-{{ option.id }}">
+                {{ option.text }}
+                
             </label>
             <br>
         {% endfor %}
         <br>
-        <input type="submit" value="Send">
+        <input id="submit" type="submit" value="Send">
     </form>
 
 
@@ -41,5 +48,7 @@
 <footer>
 
 </footer>
+
+</body>
 
 </html>
