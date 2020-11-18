@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poll details and voting</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'polls/css/main.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'polls/css/results.css' %}">
+</head>
+
+<header>
+
+        <h1 id="title"><a href="{% url 'polls:homepage' %}">POLLS</a></h1>
+
+</header>
+
+<body>
+
+<main>
+
+    <div id="poll-header">
+        <p>Poll number {{ question.id }} - <span style="color: red;">RESULTS:</span></p>
+        <h2>{{ question.text }}</h2>
+    </div>
+
+    {% for option in question.option_set.all %}
+        <p class="pumpkin-text">{{ option.text }} - {{ option.votes }}</p>
+    {% endfor %}
+
+    <a id="vote-again" href="{% url 'polls:details' question.id %}">Vote again?</a>
+
+</main>
+
+
+<footer>
+
+</footer>
+
+</body>
+
+</html>

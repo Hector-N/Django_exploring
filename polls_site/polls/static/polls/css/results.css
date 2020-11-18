@@ -1,0 +1,42 @@
+main {
+	width: 50%;
+	background-color: rgba(200, 139, 74, .2);
+	border-radius: 3em;
+	margin: auto;
+	margin-top: 10em;
+	padding: 2em;
+}
+#poll-header{
+	color: white;
+}
+	#poll-header p {
+		text-align: left;
+		font-size: 1.6em;
+	}
+	#poll-header h2 {
+		text-align: center;
+	}
+
+
+
+.pumpkin-text {
+    color: rgba(200, 139, 74, 1);
+    font-size: 1.6em;
+
+}
+.pumpkin-text:link {
+    color: rgba(200, 255, 74, 1);
+}
+
+#vote-again:link {
+    color: rgba(200, 255, 74, 1);
+}
+#vote-again:hover {
+    color: rgba(200, 255, 74, 1);
+}
+#vote-again:visited {
+    color: rgba(200, 255, 74, 1);
+}
+#vote-again:active {
+    color: rgba(200, 255, 74, 1);
+}

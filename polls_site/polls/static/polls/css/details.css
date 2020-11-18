@@ -13,7 +13,7 @@ main {
 	padding: 2em;
 }
 
-#poll-header {
+#poll-header{
 	color: white;
 }
 	#poll-header p {
@@ -42,10 +42,13 @@ form {
 		margin: 1em auto 1em auto;
 	}
 
-	#submit:hover {
+	.pumpkin-button:hover {
 		box-shadow: .3em .3em 1em rgba(200, 139, 74, 1), -.3em -.3em 1em rgba(200, 139, 74, 1);
 	}
 
-
-
-
+.error-message {
+    color: red;
+    padding-left: 1em;
+    font-size: 1.6em;
+    box-shadow: .3em .3em 1em rgba(255, 50, 50, 1), -.3em -.3em 1em rgba(255, 50, 50, 1);
+}

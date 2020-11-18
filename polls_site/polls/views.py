@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from django.utils import timezone
@@ -19,18 +19,39 @@ def home(request):
 
 def show_poll(request, poll_num):
 
-    question = Question.objects.get(pk=poll_num)
+    question = get_object_or_404(Question, pk=poll_num)
 
     return render(request,
-                  'polls/poll_details.html',
-                  {'question': question})
+                  'polls/details.html', {'question': question})
 
 
 def vote_poll(request, poll_num):
-    option_txt = request.POST['how_tall']
-    q = Question.objects.get(pk=poll_num)
-    option = q.option_set.get(text__exact=option_txt)
-    option.votes += 1
-    option.save()
 
-    return HttpResponseRedirect(reverse('polls:details', args=(q.id,)))
+    try:
+        option_id = request.POST['choice']
+    except KeyError:
+        error = True
+
+        # return HttpResponse('fucking idiot')
+        return render(request,
+                      'polls/details.html',
+                      {'question': Question.objects.get(pk=poll_num), 'error_message':error})
+    else:
+        # q = Question.objects.get(pk=poll_num)
+        # option = q.option_set.get(pk=option_id)
+        option = Option.objects.get(pk=option_id)
+        option.votes += 1
+        option.save()
+
+        return HttpResponseRedirect(reverse('polls:results',
+                                            args=(poll_num,)))
+
+
+def show_results(request, poll_num):
+
+    question = get_object_or_404(Question, pk=poll_num)
+
+    return render(request, 'polls/results.html', {'question': question})
+
+
+

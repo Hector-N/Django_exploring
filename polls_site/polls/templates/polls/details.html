@@ -20,17 +20,22 @@
 
 <main>
     <div id="poll-header">
+
         <p>Poll number {{ question.id }}</p>
-        <h2>{{ question.text }}</h2>    
+        <h2>{{ question.text }}</h2>
+
     </div>
-    
+
+    {% if error_message %}
+            <p class="error-message">You didn't select any choice</p>
+    {% endif %}
 
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
         {% for option in question.option_set.all %}
             <input id="poll-{{ question.id }}-{{ option.id }}"
-                       type="radio" name="how_tall"
-                       value="{{ option.text }}">
+                       type="radio" name="choice"
+                       value="{{ option.id }}">
             <label for="poll-{{ question.id }}-{{ option.id }}">
                 {{ option.text }}
                 
@@ -38,7 +43,7 @@
             <br>
         {% endfor %}
         <br>
-        <input id="submit" type="submit" value="Send">
+        <input class="pumpkin-button" type="submit" value="Send">
     </form>
 
 
